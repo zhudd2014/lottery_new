@@ -18,7 +18,7 @@ Page({
     status: 0, //抽奖状态 0-参与中 1-待开奖 2-已开奖
     event_id: '',
     openid: '',
-    result:'恭喜！你已中奖'
+    result: '恭喜！你已中奖'
   },
 
   /**
@@ -49,7 +49,7 @@ Page({
 
 
     const db = wx.cloud.database()
-    
+
     //TODO 可重复参与，上线后删除
     db.collection('event_joins').where({
       _openid: this.data.openid,
@@ -147,16 +147,16 @@ Page({
       },
       success: res => {
         console.log('[云函数winAPrize调用] 成功: ', res.result)
-        if (res.result.winAPrize){
+        if (res.result.winAPrize) {
           this.setData({
             result: '恭喜！你已中奖'
           })
-        }else{
+        } else {
           this.setData({
             result: '很遗憾,你未中奖'
           })
         }
-        
+
         console.log('[云函数winAPrize调用] 成功: ', res.result.winAPrize)
       },
       fail: err => {
@@ -168,15 +168,15 @@ Page({
       }
     })
 
-    
+
     console.log('#####event_suc_counts' + this.data.event_suc_counts)
     console.log('#####prize.reaching_users' + this.data.prize.reaching_users)
     console.log('#####prize.status' + this.data.prize.status)
     console.log('#####isParticipated' + this.data.isParticipated)
-    
+
   },
 
-  
+
 
   /**
    * 登记报名时，openid字段对不上，查询页查询不到
@@ -203,7 +203,7 @@ Page({
           isParticipated: true,
           joinUserCount: updateNum
         })
-      
+
         this.getJoiners(db)
 
         wx.showToast({
@@ -247,10 +247,10 @@ Page({
 
   goToUsers: function() {
     wx.navigateTo({
-      url: '../users/users?event_id='+this.data.event_id
+      url: '../users/users?event_id=' + this.data.event_id
     })
   },
-  goEventSuc: function () {
+  goEventSuc: function() {
     wx.navigateTo({
       url: '../eventSuc/eventSuc?event_id=' + this.data.event_id
     })
@@ -266,12 +266,12 @@ Page({
       // title: app.globalData.userInfo.nickName + '在又见等你，一起去遇见自己',
       path: '/pages/index/index',
       // imageUrl: 'https://res-mindfullness-vigour-wechat.deepbaysz.com/images/share_pic.png',
-      success: function (res) {
+      success: function(res) {
 
       }
     }
   },
-  getJoiners: function (db){
+  getJoiners: function(db) {
     //查询最近七个头像
     db.collection('event_joins').where({
       event_id: this.data.event_id
@@ -292,10 +292,14 @@ Page({
       }
     })
   },
-  onPullDownRefresh:function(){
+  onPullDownRefresh: function() {
     // wx.startPullDownRefresh();
-    setTimeout(()=>{
+    let options = {
+      prize: JSON.stringify(this.data.prize)
+    }
+    this.onLoad(options)
+    setTimeout(() => {
       wx.stopPullDownRefresh()
-    },1000)
+    }, 1500)
   }
 })
