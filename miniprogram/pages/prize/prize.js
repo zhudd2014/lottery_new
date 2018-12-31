@@ -147,7 +147,7 @@ Page({
         console.log('[云函数winAPrize调用] 成功: ', res.result)
         if (res.result.winAPrize) {
           this.setData({
-            result: '恭喜！你已中奖'
+            result: '恭喜！你已中奖: ' + res.result.winAPrizeShowInfo
           })
         } else {
           this.setData({
