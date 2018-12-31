@@ -57,6 +57,7 @@
 
   <view class='winner' wx:if="{{prize.status == 2}}">
     <view class='result'>{{result}}</view>
+    <view class='result' style='text-align:center;font-size:26px' wx:if="{{winAPrize != ''}}">{{winAPrizeShowInfo}}</view>
     <view class='winner-userlist'>中奖者名单</view>
 
     <view wx:for="{{event_suc}}" wx:for-item="prize_info" wx:key="index" class='winner-item'>

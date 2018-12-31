@@ -18,7 +18,8 @@ Page({
     status: 0, //抽奖状态 0-参与中 1-待开奖 2-已开奖
     event_id: '',
     openid: '',
-    result: '恭喜！你已中奖'
+    result: '',
+    winAPrizeShowInfo: ''
   },
 
   /**
@@ -147,7 +148,8 @@ Page({
         console.log('[云函数winAPrize调用] 成功: ', res.result)
         if (res.result.winAPrize) {
           this.setData({
-            result: '恭喜！你已中奖: ' + res.result.winAPrizeShowInfo
+            result: '恭喜！你已获得:',
+            winAPrizeShowInfo: res.result.winAPrizeShowInfo
           })
         } else {
           this.setData({
