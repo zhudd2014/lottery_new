@@ -45,7 +45,7 @@ exports.main = async(event, context) => {
     console.log(prizeList[i])
 
     let eachRow ={};
-    eachRow.prize_info = prizeList[i];
+    eachRow = prizeList[i];
     let eachRowOfUsers = [];
 
     for (let j = 0, userLen = prizedUsers.length; j < userLen; j++) {
