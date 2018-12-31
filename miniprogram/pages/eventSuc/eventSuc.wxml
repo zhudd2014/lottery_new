@@ -9,8 +9,8 @@
   </view>
 </view>
 
-<view wx:if="{{isAdmin}}">
-  <view bindtap='addRandomOne' wx:if="{{isAdmin}}">
+
+  <view bindtap='addRandomOne'>
     <button>随机添加一个中奖者</button>
   </view>
 
@@ -19,7 +19,6 @@
   <view>一旦点击就开奖了</view>
   <view>设置中奖人数为30，达到100人后自动开奖，不需要手点</view>
   <view></view>
-  <view bindtap='fill' wx:if="{{isAdmin}}">
+  <view bindtap='fill'>
     <button>随机设置剩余抽奖人</button>
   </view>
-</view>

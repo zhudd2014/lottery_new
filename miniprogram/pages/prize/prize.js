@@ -17,7 +17,6 @@ Page({
     event_suc_counts: 0,
     status: 0, //抽奖状态 0-参与中 1-待开奖 2-已开奖
     event_id: '',
-    isAdmin: false,
     openid: '',
     result:'恭喜！你已中奖'
   },
@@ -140,28 +139,6 @@ Page({
     })
 
 
-    //TODO 此处isAdmin返回貌似不对
-    wx.cloud.callFunction({
-      name: 'isAdminByCloud',
-      data: {
-        openid: this.data.openid,
-      },
-      success: res => {
-        this.setData({
-          isAdmin: res.result.isAdmin,
-        })
-        console.log('[云函数isAdminByCloud调用] 成功: ', res.result.isAdmin)
-
-      },
-      fail: err => {
-        wx.showToast({
-          icon: 'none',
-          title: '调用失败',
-        })
-        console.error('[云函数] [isAdminByCloud] 调用失败：', err)
-      }
-    })
-
     // 查询是否中奖
     wx.cloud.callFunction({
       name: 'winAPrize',
@@ -193,7 +170,6 @@ Page({
 
     
     console.log('#####event_suc_counts' + this.data.event_suc_counts)
-    console.log('#####isAdmin'+this.data.isAdmin)
     console.log('#####prize.reaching_users' + this.data.prize.reaching_users)
     console.log('#####prize.status' + this.data.prize.status)
     console.log('#####isParticipated' + this.data.isParticipated)

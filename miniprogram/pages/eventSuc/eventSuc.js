@@ -7,7 +7,6 @@ Page({
   data: {
     event_suc: [],
     event_suc_counts:0,
-    isAdmin:false,
     event_id:''
   },
 

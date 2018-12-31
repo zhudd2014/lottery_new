@@ -12,7 +12,7 @@ exports.main = async(event, context) => {
 
   // 查询所有奖品
   let getPrizeListRet = await db.collection('prizes').where({
-    event_id: 'testA',
+    event_id: event.event_id,
   }).orderBy('level', 'asc').get({
     success: res => {
       return res;
@@ -25,7 +25,7 @@ exports.main = async(event, context) => {
 
   //查询所有中奖人
   let getPrizedUsersListRet = await db.collection('prizedUsers').where({
-    event_id: 'testA',
+    event_id: event.event_id,
     level: _.gt(0)
   }).orderBy('level', 'asc').get({
     success: res => {
