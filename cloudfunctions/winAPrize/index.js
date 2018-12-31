@@ -4,37 +4,47 @@ const cloud = require('wx-server-sdk')
 cloud.init()
 
 // 云函数入口函数
-exports.main = async (event, context) => {
+exports.main = async(event, context) => {
 
   console.log(event.userInfo.openId)
   const db = cloud.database();
   const _ = db.command
   let winAPrize = false;
+  let winAPrizeShowInfo = '';
 
   // 查询当前用户所有的 counters
-  let getEventSucResult = await db.collection('event_joins').where({
-    event_id: event.event_id,
+  let getEventSucResult = await db.collection('prizedUsers').where({
+    _openid: event.userInfo.openId,
     level: _.gt(0)
-  }).orderBy('level', 'desc').get({
+  }).get({
     success: res => {
-      result = res;
-      return result;
+      return res;
     }
   });
   console.log('#####getEventSucResult')
   console.log(getEventSucResult.data)
 
-  for (let i = 0, len = getEventSucResult.data.length; i < len; i++) {
-    console.log('#####tem')
-    console.log(getEventSucResult.data[i])
-    if (getEventSucResult.data[i]._openid == event.userInfo.openId) {
-      winAPrize = true
-    }
+  if (getEventSucResult.data.length > 0) {
+    winAPrize = true
+    console.log('#####level')
+    console.log(getEventSucResult.data[0].level)
+    console.log('#####event_id')
+    console.log(event.event_id)
+    // 查询所有奖品
+    let getPrizeListRet = await db.collection('prizes').where({
+      event_id: event.event_id,
+      level: getEventSucResult.data[0].level
+    }).get({
+      success: res => {
+        return res;
+      }
+    });
+    console.log(getPrizeListRet)
+    winAPrizeShowInfo = getPrizeListRet.data[0].name;
   }
 
-
-
   return {
-    winAPrize: winAPrize
+    winAPrize: winAPrize,
+    winAPrizeShowInfo: winAPrizeShowInfo
   }
 }

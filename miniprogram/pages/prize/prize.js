@@ -50,7 +50,6 @@ Page({
 
     const db = wx.cloud.database()
 
-    //TODO 可重复参与，上线后删除
     db.collection('event_joins').where({
       _openid: this.data.openid,
       event_id: this.data.event_id,
@@ -58,7 +57,7 @@ Page({
       success: res => {
         if (res.data.length > 0) {
           this.setData({
-            isParticipated: false
+            isParticipated: true
           })
         }
         console.log('[数据库event_joins] [查询当前用户有无参加] 成功: ', res.data.length)
@@ -142,6 +141,7 @@ Page({
       name: 'winAPrize',
       data: {
         openid: this.data.openid,
+        event_id: this.data.event_id
       },
       success: res => {
         console.log('[云函数winAPrize调用] 成功: ', res.result)
@@ -181,6 +181,10 @@ Page({
   joinGame: function() {
 
     if (this.data.isParticipated) {
+      return
+    }
+
+    if (this.data.status != 0) {
       return
     }
 

@@ -15,19 +15,19 @@ exports.main = async (event, context) => {
   const _ = db.command
 
   // 查询当前用户所有的 counters
-  let getEventSucResult = await db.collection('event_joins').where({
-    event_id: event.event_id,
-    level: _.gt(0)
-  }).orderBy('level', 'desc').get({
-    success: res => {
-      result = res;
-      return result;
-    }
-  });
+  // let getEventSucResult = await db.collection('event_joins').where({
+  //   event_id: event.event_id,
+  //   level: _.gt(0)
+  // }).orderBy('level', 'desc').get({
+  //   success: res => {
+  //     result = res;
+  //     return result;
+  //   }
+  // });
 
   return {
-    getEventSucResult: getEventSucResult,
-    sucResultCounts: getEventSucResult.data.length,
+    getEventSucResult: '',
+    sucResultCounts: '',
     event,
     openid: wxContext.OPENID,
     appid: wxContext.APPID,
