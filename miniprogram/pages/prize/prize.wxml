@@ -26,7 +26,7 @@
           <block wx:elif="{{isParticipated && prize.status == 0}}">
             <text>待开奖</text>
           </block>
-          <block wx:elif="{{prize.status == 1 && event_suc_counts >= prize.prize_num}}">
+          <block wx:elif="{{prize.status == 2}}">
             <text>已开奖</text>
           </block>
           <block wx:else>

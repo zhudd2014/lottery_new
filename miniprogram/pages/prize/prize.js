@@ -170,7 +170,6 @@ Page({
 
 
     console.log('#####event_suc_counts' + this.data.event_suc_counts)
-    console.log('#####prize.reaching_users' + this.data.prize.reaching_users)
     console.log('#####prize.status' + this.data.prize.status)
     console.log('#####isParticipated' + this.data.isParticipated)
 
@@ -210,21 +209,7 @@ Page({
           title: '报名成功',
         })
 
-        //参与者到指定人数时，设置为待开奖
-        if (this.data.joinUserCount >= this.data.prize.reaching_users) {
-          wx.cloud.callFunction({
-            name: 'updateLotteryPending',
-            data: {
-              event_id: this.data.event_id,
-            },
-            success: res => {
-
-            }
-          })
-        }
-
         console.log('[数据库event_joins] [新增记录] 成功，记录 _id: ', open_id)
-
 
       },
       fail: err => {
