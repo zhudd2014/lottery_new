@@ -1,0 +1,36 @@
+<wxs module="dateUtil" src="../../wxs/format.wxs"></wxs>
+<view class="indexPage">
+  <view class="loading" wx:if="{{!inited}}">
+    <image mode="aspectFit" src="https://cdn.readhub.cn/mina/lottery/loading.gif"></image>
+  </view>
+  <block wx:else>
+    <view class="scrollview" wx:if="{{!isEmpty}}">
+      <view class="group">
+        <image class="official-banner" mode="widthFix" src="https://cdn.readhub.cn/mina/lottery/selfhelp-banner@3x.png"></image>
+        <view class="group-list">
+          <view class="item" wx:for="{{lotteries}}" wx:key="id" bindtap='goToLottery' data-index="{{index}}">
+            <view>
+                <image mode="widthFix" src="{{item.banner}}" style="{{imageStyle}}" lazy-load='true'></image>
+              </view>
+              <view class='lottery-info'>
+                <view class='sponsor'>{{item.sponsor}}</view>
+                <view class='prizes'>{{item.prizes}}</view>
+                <view class='lottery-date' wx:if="{{!item.reaching_users}}">{{dateUtil.dateFormat(item.lotteryDate)}} 自动开奖</view>
+                <view class='lottery-date' wx:else>满{{item.reaching_users}}人 自动开奖</view>
+              </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="empty" wx:else>
+      <image mode="aspectFit" src="https://cdn.readhub.cn/mina/lottery/icn-empty-default-1@3x.png"></image>
+      <button bindtap="initPage" type="warn" wx:if="{{showReload}}">刷新页面</button>
+    </view>
+
+  </block>
+</view>
+<view>
+</view>
+
+<button class='mask' open-type="getUserInfo" bindgetuserinfo="getUserInfo" wx:if="{{!userInfo}}"></button>
+

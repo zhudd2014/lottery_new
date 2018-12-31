@@ -1,0 +1,98 @@
+page {
+    background-color: #f0f0f0;
+    width: 100%;
+    height: 100%;
+    font-family: "PingFangSC-Regular";
+}
+
+.userspage .main {
+    height: 100%;
+}
+
+.userspage .ad-container {
+    padding: 15px 15px 5px;
+}
+
+.userspage .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+    margin-top: 70%;
+}
+
+.userspage .loading image {
+    width: 28px;
+    height: 28px;
+}
+
+.userspage .join-users {
+    margin: 10px 0px 0px;
+}
+
+.userspage .join-users .join-users-banner {
+    height: 18px;
+    text-align: center;
+}
+
+.userspage .join-users .join-users-banner .join-users-banner-value {
+    font-size: 15px;
+    letter-spacing: .3px;
+    text-align: center;
+    color: #808080;
+    flex: 0 0 auto;
+}
+
+.userspage .join-users .join-users-banner .join-users-banner-value view {
+    display: inline-block;
+    color: #45749f;
+    font-weight: bolder;
+    padding: 0px 6px;
+}
+
+.userspage .join-users .join-users-banner .join-users-banner-value view.highlight {
+    color: #45648f;
+    background: #ddd;
+}
+
+.userspage .join-users .join-users-banner .join-users-banner-line {
+    flex: 1 1 auto;
+    height: 1px;
+    opacity: .06;
+    background-color: #000000;
+    margin: 0px 14px;
+    align-self: center;
+}
+
+.userspage .join-users .join-users-list {
+    margin-top: 20px;
+    padding: 0px 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.userspage .join-users .join-users-list .join-users-user {
+    width: 33px;
+    height: 33px;
+    display: flex;
+    justify-content: center;
+    margin: 0px 0px 4px;
+}
+
+.userspage .join-users .join-users-list .join-users-user image {
+    width: 33px;
+    height: 33px;
+}
+
+.userspage .join-users .join-users-loadmore {
+    font-size: 14px;
+    color: #2573b8;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 100px;
+}
+
+.userspage .join-users .join-users-loadmore.highlight {
+    opacity: .5;
+}

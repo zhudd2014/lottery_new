@@ -1,0 +1,52 @@
+/* miniprogram/pages/eventSuc/eventSuc.wxss */
+.winner {
+  margin-bottom: 15px;
+  background-color: #fff;
+  padding-bottom: 20rpx
+}
+
+.winner-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  margin: 0 20rpx;
+  padding-top: 12px;
+  border: 1rpx solid #dbd3d3
+}
+
+.winner-user {
+  width: 220rpx;
+  /* height: 250rpx; */
+  /* flex: 0 0 auto; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.winner-user image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.nike-name{
+  font-size: 11px;
+  color: #000;
+  margin: 12px 0 15px
+}
+
+.winner-userlist{
+  font-size: 14px;
+  color: #000;
+  margin: 20rpx;
+  padding-top: 20rpx
+}
+.result{
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  margin: 20rpx;
+}

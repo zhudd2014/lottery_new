@@ -1,0 +1,19 @@
+<view class="userspage">
+  <view class="loading" wx:if="{{!inited}}">
+      <image mode="aspectFit" src="https://cdn.readhub.cn/mina/lottery/loading.gif"></image>
+    </view>
+    <view class="main" wx:else>
+      <view class="join-users">
+        <view class="join-users-banner">
+          <view class="join-users-banner-value">
+            {{count}} 位参与者</view>
+        </view>
+        <view class="join-users-list">
+          <view class="join-users-user" style="{{userFlex}}" wx:for="{{users}}" wx:key="id">
+            <image lazyLoad="lazy-load" mode="aspectFill" src="{{item.touxiang_pic}}"></image>
+          </view>
+        </view>
+        <view bindtap="loadMore" class="join-users-loadmore" hoverClass="highlight" wx:if="{{hasMore}}">{{loading?'加载中...':'加载更多'}}</view>
+      </view>
+    </view>
+</view>

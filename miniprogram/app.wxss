@@ -1,0 +1,48 @@
+page {
+    background-color: #f0f0f0;
+    width: 100%;
+    height: 100%;
+    font-family: "PingFangSC-Regular";
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+.buttonfix {
+    padding: 0px;
+    margin: 0px;
+    border-radius: 0px;
+    border: none;
+    font-size: inherit;
+    color: inherit;
+    background: inherit;
+    text-align: inherit;
+    line-height: inherit;
+    overflow: initial;
+}
+
+.buttonfix:after {
+    display: none;
+}
+
+.buttonfix:before {
+    display: none;
+}
+
+.clearfix:before,.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+.clearfix:after {
+    clear: both;
+}

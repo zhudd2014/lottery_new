@@ -1,0 +1,45 @@
+<!--miniprogram/pages/detail/detail.wxml-->
+<text>miniprogram/pages/detail/detail.wxml</text>
+
+
+<!-- 查询记录 -->
+<view class="guide">
+  <text class="headline">奖品详情页</text>
+
+  <image class="uploader-image" src="{{prize_pic}}"></image>
+  <view>
+    <text class="code" wx:if="{{title}}">{{title}}</text>
+  </view>
+
+  <view>
+    <text>奖品：</text>
+    <text class="code" wx:if="{{prize}}">{{prize}}</text>
+    <text class="code" wx:if="{{prize_num}}">{{prize_num}}</text>
+  </view>
+  <view>
+    <text class="code" wx:if="{{describe}}">{{describe}}</text>
+  </view>
+
+
+  <view wx:if="{{prize == 0 && !hasJoined }}">
+    <button bindtap="onAdd">参加抽奖</button>
+  </view>
+
+  <view wx:if="{{prize == 0 && hasJoined }}">
+    <text>已参与</text>
+  </view>
+
+
+  <navigator url="../participants/participants" class="uploader-text ">
+    <button>已有{{join_nums}}参与，查看全部</button>
+  </navigator>
+
+  <!-- </view>
+  <view wx:if="{{prize==1 }} "> -->
+  <navigator url="../eventSuc/eventSuc" class="uploader-text ">
+    <button>查看中奖名单</button>
+  </navigator>
+
+
+
+</view>

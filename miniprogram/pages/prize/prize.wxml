@@ -1,0 +1,74 @@
+<wxs module="dateUtil" src="../../wxs/format.wxs"></wxs>
+<view class='container'>
+  <image mode="widthFix" src="{{prize.banner}}" style="{{imageStyle}}" lazy-load='true'></image>
+  <view class='lottery-info'>
+    <view class='prizes'>{{prize.prizes}}</view>
+    <view class='lottery-date' wx:if="{{!prize.reaching_users}}">{{dateUtil.dateFormat(prize.lotteryDate)}} 自动开奖</view>
+    <view class='lottery-date' wx:else>满{{prize.reaching_users}}人 自动开奖</view>
+    <!-- <view class='split'></view>
+    <view class='sponsor'>
+      <view>赞助商</view>
+      <view>{{prize.sponsor}}</view>
+    </view> -->
+  </view>
+
+  <view class="join-normal-lottery">
+    <form reportSubmit bindsubmit="joinGame">
+      <button animation="{{btnAnimationData}}" class="{{game.theme}} {{isParticipated?'joined':''}} {{game.condition_error?'disable':''}}" formType="submit" hoverClass="hover" hoverStartTime="{{0}}" hoverStayTime="{{0}}">
+        <view animation="{{bgAnimationData}}" class="animate-bg"></view>
+        <view class="content">
+          <block wx:if="{{!isParticipated && prize.status == 0}}">
+            <text>参与抽奖</text>
+          </block>
+          <block wx:elif="{{isParticipated && prize.status == 0}}">
+            <text>待开奖</text>
+          </block>
+          <block wx:elif="{{prize.status == 1 && event_suc_counts >= prize.prize_num}}">
+            <text>已开奖</text>
+          </block>
+          <block wx:else>
+            <text>待开奖</text>
+          </block>
+        </view>
+      </button>
+    </form>
+  </view>
+
+  <view class="game-detail-users">
+    <view class="game-detail-users-banner">
+      <view class="game-detail-users-banner-value">
+        <text>已有 </text>
+        <text>{{joinUserCount}}</text>
+        <text> 人参与，</text>
+        <view bindtap="goToUsers" hoverClass="highlight">查看全部
+          <text class="arrow-right"></text>
+        </view>
+      </view>
+    </view>
+    <view class="game-detail-users-list">
+      <view class="game-detail-users-user" wx:for="{{joinUsers}}" wx:key="index">
+        <image lazyLoad="lazy-load" mode="aspectFill" src="{{item.touxiang_pic}}"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class='winner' wx:if="{{prize.status == 1 && event_suc_counts >= prize.prize_num}}">
+    <view class='result'>{{result}}</view>
+    <view class='winner-userlist'>中奖者名单</view>
+    <view class="winner-list">
+      <view class="winner-user" wx:for="{{event_suc}}" wx:key="index">
+        <image mode="aspectFill" src="{{item.touxiang_pic}}"></image>
+        <view class='nike-name'>{{item.nick_name}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view>
+
+  </view>
+
+  <view wx:if="{{isAdmin}}">
+      <button bindtap='goEventSuc'>查看中奖名单</button>
+  </view>
+
+</view>

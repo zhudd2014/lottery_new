@@ -1,0 +1,25 @@
+<view class='winner'>
+  <!-- <view class='result'>很遗憾, 你未中奖</view> -->
+  <view class='winner-userlist'>中奖者人数名单 - {{event_suc_counts}}人</view>
+  <view class="winner-list">
+    <view class="winner-user" wx:for="{{event_suc}}" wx:key="index">
+      <image mode="aspectFill" src="{{item.touxiang_pic}}"></image>
+      <view class='nike-name'>{{item.nick_name}}</view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{isAdmin}}">
+  <view bindtap='addRandomOne' wx:if="{{isAdmin}}">
+    <button>随机添加一个中奖者</button>
+  </view>
+
+  <view>占位置用</view>
+  <view>开奖慎重点</view>
+  <view>一旦点击就开奖了</view>
+  <view>设置中奖人数为30，达到100人后自动开奖，不需要手点</view>
+  <view></view>
+  <view bindtap='fill' wx:if="{{isAdmin}}">
+    <button>随机设置剩余抽奖人</button>
+  </view>
+</view>
