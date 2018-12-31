@@ -100,4 +100,17 @@ Page({
       userInfo: e.detail.userInfo
     })
   },
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+    return {
+      // title: app.globalData.userInfo.nickName + '在又见等你，一起去遇见自己',
+      path: '/pages/index/index',
+      // imageUrl: 'https://res-mindfullness-vigour-wechat.deepbaysz.com/images/share_pic.png',
+      success: function (res) {
+
+      }
+    }
+  }
 })

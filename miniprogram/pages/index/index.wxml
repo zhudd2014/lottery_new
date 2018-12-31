@@ -14,7 +14,10 @@
               </view>
               <view class='lottery-info'>
                 <view class='sponsor'>{{item.sponsor}}</view>
-                <view class='prizes'>{{item.prizes}}</view>
+                <!-- <view class='prizes'>{{item.prizes}}</view> -->
+<view class="prizes" wx:for="{{item.prizes}}" wx:for-item="prize" wx:key="index">
+                <block wx:if="{{item.prizes.length>1}}">{{['一','二','三','四','五'][index]}}等奖 : {{prize.name}}</block>
+</view>
                 <view class='lottery-date' wx:if="{{!item.reaching_users}}">{{dateUtil.dateFormat(item.lotteryDate)}} 自动开奖</view>
                 <view class='lottery-date' wx:else>满{{item.reaching_users}}人 自动开奖</view>
               </view>

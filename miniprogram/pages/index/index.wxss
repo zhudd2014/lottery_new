@@ -78,7 +78,7 @@ page::-webkit-scrollbar {
 }
 
 .prizes {
-  font-size: 16px;
+  font-size: 15px;
   color: rgba(0, 0, 0, 0.9);
   line-height: 1.59;
   margin-top: 10px;

@@ -2,7 +2,10 @@
 <view class='container'>
   <image mode="widthFix" src="{{prize.banner}}" style="{{imageStyle}}" lazy-load='true'></image>
   <view class='lottery-info'>
-    <view class='prizes'>{{prize.prizes}}</view>
+    <!-- <view class='prizes'>{{prize.prizes}}</view> -->
+    <view class="prizes" wx:for="{{prize.prizes}}" wx:for-item="item" wx:key="index">
+      <block wx:if="{{prize.prizes.length>1}}">{{['一','二','三','四','五'][index]}}等奖 : {{item.name}}</block>
+    </view>
     <view class='lottery-date' wx:if="{{!prize.reaching_users}}">{{dateUtil.dateFormat(prize.lotteryDate)}} 自动开奖</view>
     <view class='lottery-date' wx:else>满{{prize.reaching_users}}人 自动开奖</view>
     <!-- <view class='split'></view>
@@ -68,7 +71,7 @@
   </view>
 
   <view wx:if="{{isAdmin}}">
-      <button bindtap='goEventSuc'>查看中奖名单</button>
+    <button bindtap='goEventSuc'>查看中奖名单</button>
   </view>
 
 </view>

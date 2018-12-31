@@ -285,7 +285,14 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
+    return {
+      // title: app.globalData.userInfo.nickName + '在又见等你，一起去遇见自己',
+      path: '/pages/index/index',
+      // imageUrl: 'https://res-mindfullness-vigour-wechat.deepbaysz.com/images/share_pic.png',
+      success: function (res) {
 
+      }
+    }
   },
   getJoiners: function (db){
     //查询最近七个头像
@@ -307,5 +314,11 @@ Page({
         console.error('[数据库] [查询记录] 失败：', err)
       }
     })
+  },
+  onPullDownRefresh:function(){
+    // wx.startPullDownRefresh();
+    setTimeout(()=>{
+      wx.stopPullDownRefresh()
+    },1000)
   }
 })
