@@ -58,12 +58,20 @@
   <view class='winner' wx:if="{{prize.status == 2}}">
     <view class='result'>{{result}}</view>
     <view class='winner-userlist'>中奖者名单</view>
-    <view class="winner-list">
-      <view class="winner-user" wx:for="{{event_suc}}" wx:key="index">
-        <image mode="aspectFill" src="{{item.touxiang_pic}}"></image>
-        <view class='nike-name'>{{item.nick_name}}</view>
+
+    <view wx:for="{{event_suc}}" wx:for-item="prize_info" wx:key="index" class='winner-item'>
+      <view class='winner-header'>{{['一','二','三','四','五','六'][index]}}等奖 : {{prize_info.name}} X{{prize_info.num}}</view>
+      <view class="winner-list">
+
+        <view class="winner-user" wx:for="{{prize_info.users_info}}" wx:for-item="user" wx:key="index">
+          <image mode="aspectFill" src="{{user.touxiang_pic}}"></image>
+          <view class='nike-name'>{{user.nick_name}}</view>
+        </view>
+
       </view>
     </view>
+
+
   </view>
 
   <view>

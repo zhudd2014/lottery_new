@@ -116,17 +116,15 @@ Page({
     })
 
     wx.cloud.callFunction({
-      name: 'getEventSuc',
+      name: 'getPrizedUsers',
       data: {
         event_id: this.data.event_id,
       },
       success: res => {
         this.setData({
-          event_suc: res.result.getEventSucResult.data,
-          event_suc_counts: res.result.sucResultCounts
+          event_suc: res.result.result
         })
-        console.log('[云函数getEventSuc调用] 成功: ', res.result.getEventSucResult.data)
-        console.log('[云函数getEventSuc调用] 成功event_suc_counts: ', res.result.sucResultCounts)
+        console.log('[云函数getPrizedUsers调用] 成功: ', res.result)
 
       },
       fail: err => {
@@ -134,7 +132,7 @@ Page({
           icon: 'none',
           title: '调用失败',
         })
-        console.error('[云函数] [getEventSuc] 调用失败：', err)
+        console.error('[云函数] [getPrizedUsers] 调用失败：', err)
       }
     })
 
