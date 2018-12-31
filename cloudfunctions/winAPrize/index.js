@@ -15,6 +15,7 @@ exports.main = async(event, context) => {
   // 查询当前用户所有的 counters
   let getEventSucResult = await db.collection('prizedUsers').where({
     _openid: event.userInfo.openId,
+    event_id: event.event_id,
     level: _.gt(0)
   }).get({
     success: res => {
