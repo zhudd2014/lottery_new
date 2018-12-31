@@ -51,6 +51,7 @@ Page({
 
     const db = wx.cloud.database()
     
+    //TODO 可重复参与，上线后删除
     db.collection('event_joins').where({
       _openid: this.data.openid,
       event_id: this.data.event_id,
@@ -58,7 +59,7 @@ Page({
       success: res => {
         if (res.data.length > 0) {
           this.setData({
-            isParticipated: true
+            isParticipated: false
           })
         }
         console.log('[数据库event_joins] [查询当前用户有无参加] 成功: ', res.data.length)

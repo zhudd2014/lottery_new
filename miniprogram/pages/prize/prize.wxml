@@ -70,8 +70,8 @@
 
   </view>
 
-  <view wx:if="{{isAdmin}}">
-    <button bindtap='goEventSuc'>查看中奖名单</button>
-  </view>
+
+  <button bindtap='goEventSuc'>查看中奖名单</button>
+
 
 </view>

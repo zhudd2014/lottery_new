@@ -24,16 +24,16 @@ Page({
     console.log('[SucEnvPage]options: ' + this.data.event_id)
     
     wx.cloud.callFunction({
-      name: 'getEventSuc',
+      name: 'getPrizedUsers',
       data: {
         event_id: this.data.event_id,
       },
       success: res => {
-        this.setData({
-          event_suc: res.result.getEventSucResult.data,
-          event_suc_counts: res.result.getEventSucResult.data.length
-        })
-        console.log('[云函数getEventSuc调用] 成功: ', res.result.getEventSucResult.data)
+        // this.setData({
+        //   event_suc: res.result.getEventSucResult.data,
+        //   event_suc_counts: res.result.getEventSucResult.data.length
+        // })
+        console.log('[云函数getPrizedUser调用] 成功: ', res)
      
       },
       fail: err => {
@@ -45,26 +45,6 @@ Page({
       }
     })
 
-    wx.cloud.callFunction({
-      name: 'isAdminByCloud',
-      data: {
-        openid: this.data.openid,
-      },
-      success: res => {
-        this.setData({
-          isAdmin: res.result.isAdmin,
-        })
-        console.log('[云函数getAdminOpenId调用] 成功: ', res.result.isAdmin)
-
-      },
-      fail: err => {
-        wx.showToast({
-          icon: 'none',
-          title: '调用失败',
-        })
-        console.error('[云函数] [getAdminOpenId] 调用失败：', err)
-      }
-    })
   },
 
 
