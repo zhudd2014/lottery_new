@@ -55,7 +55,7 @@
     </view>
   </view>
 
-  <view class='winner' wx:if="{{prize.status == 1 && event_suc_counts >= prize.prize_num}}">
+  <view class='winner' wx:if="{{prize.status == 2}}">
     <view class='result'>{{result}}</view>
     <view class='winner-userlist'>中奖者名单</view>
     <view class="winner-list">
